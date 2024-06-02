@@ -1,0 +1,85 @@
+<div class="p-4 sm:ml-64">
+    <div class="flex items-center justify-center p-12">
+
+        <div class="mx-auto w-full max-w-[550px] bg-white">
+            <div class="mt-3 mb-3 text-3xl font-medium text-[#6A64F1]  ">
+                <h1>Thêm mới sản phẩm</h1>
+            </div>
+            <form action=""novalidate #formProductAdd="ngForm" (ngSubmit)="onHandleSubmit(formProductAdd)">
+                <div class="mb-5">
+                    <label class="mb-3 block text-base font-medium text-[#07074D]">
+                        Tên sản phẩm
+                    </label>
+                    <input type="text" placeholder="Tên sản phẩm" [(ngModel)]="product.title" required #title="ngModel" name="title" minlength="6"
+                        class=" w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <div *ngIf="title.invalid && (title?.dirty || title?.touched)">
+                        <div *ngIf="title?.hasError('required')" class="form-text text-red-500 ">
+                            Name is required
+                        </div>
+                        <div *ngIf="title?.hasError('minlength')" class="form-text text-red-500 ">
+                            Name phải có 6 kí tự
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label class="mb-3 block text-base font-medium text-[#07074D]">
+                        Giá sản phẩm
+                    </label>
+                    <input type="number" placeholder="Giá sản phẩm" name="price" [(ngModel)]="product.price" required min="1"
+                        #price="ngModel"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <div *ngIf="price.invalid && (price?.dirty || price?.touched)">
+                        <div *ngIf="price?.hasError('required')" class="form-text text-red-500 ">
+                            Price is required
+                        </div>
+                        <div *ngIf="price?.hasError('min')" class="form-text text-red-500 ">
+                            Price >0
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label class="mb-3 block text-base font-medium text-[#07074D]">
+                        Danh mục sản phẩm
+                    </label>
+                
+                    <select name="HeadlineAct" id="HeadlineAct" name="category"  [(ngModel)]="product.category" required #category="ngModel"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                        <option value="">Please select</option>
+                        <option *ngFor="let item of categories" [value]="item.name">{{ item.name }}</option>
+                
+                    </select>
+                    <div *ngIf="category.invalid && (category?.dirty || category?.touched)">
+                        <div *ngIf="category?.hasError('required')" class="form-text text-red-500 ">
+                            Category is required
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label class="mb-3 block text-base font-medium text-[#07074D]">
+                        Ảnh sản phẩm
+                    </label>
+                    <input type="text" placeholder="Ảnh sản phẩm" name="image" [(ngModel)]="product.image" #image="ngModel" required
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        <div *ngIf="image.invalid && (image?.dirty || image?.touched)">
+                            <div *ngIf="image?.hasError('required')" class="form-text text-red-500 ">
+                                Image is required
+                            </div>
+                        </div>
+                </div>
+                <div class="mb-5">
+                    <label for="message" class="mb-3 block text-base font-medium text-[#07074D]">
+                        Mô tả sản phẩm
+                    </label>
+                    <textarea rows="4" placeholder="Mô tả sản phẩm" name="description" [(ngModel)]="product.description" #description="ngModel"
+                        class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+                </div>
+                <div>
+                    <button type="submit" [disabled]="formProductAdd.invalid"
+                        class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none disabled:bg-red-350">
+                        Sửa
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

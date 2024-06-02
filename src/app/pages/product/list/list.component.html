@@ -1,0 +1,28 @@
+<div class="flex bg-gray-50 grid grid-cols-2 md:grid-cols-3 gap-3 mx-auto px-32 py-4">
+    <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 mr-6 my-8"
+        *ngFor="let item of products.slice(0,6)">
+        <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
+            <img [src]="item.image" alt="card-image" class="object-cover w-full h-full" />
+        </div>
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+                <a routerLink="/product/detail/{{item.id}}"
+                    class="block font-sans  antialiased font-medium text-2xl leading-relaxed text-blue-gray-900">
+                    {{item.title.substring(0,25)}}...
+                </a>
+
+            </div>
+            <p class="block font-sans text-base antialiased font-normal leading-normal text-gray-700 opacity-75">
+                {{item.description.substring(0,40)}}...
+            </p>
+        </div>
+        <div class="p-6 pt-0">
+            <div class="flex items-center justify-between">
+                <span class="text-3xl font-bold text-gray-900 dark:text-white">{{item.price}}$</span>
+                <a href="#"
+                    class="text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                    to cart</a>
+            </div>
+        </div>
+    </div>
+</div>
